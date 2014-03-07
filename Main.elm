@@ -4,7 +4,7 @@ import Keyboard
 -- Input
 
 delta : Signal Time
-delta = inSeconds <~ fps 35
+delta = inSeconds <~ fps 25
 
 type Input = { arrowX:Int, arrowY:Int, delta:Time }
 input = sampleOn delta ( Input <~ lift .x Keyboard.arrows
@@ -12,22 +12,22 @@ input = sampleOn delta ( Input <~ lift .x Keyboard.arrows
                                 ~ delta)
 
 -- Model
-type Point = (Int,Int)
-type Game = {pos:Point}
+type Game = {x:Float, y:Float}
 
 defaultGame : Game
-defaultGame = { pos = (0,0) }
+defaultGame = { x = 0, y = 0 }
 
 
 -- Update
 stepGame : Input -> Game -> Game
-stepGame {arrowX,arrowY,delta} game = { game | pos <- (arrowX,arrowY) }
+stepGame {arrowX, arrowY, delta} game = { game | x <- game.x + toFloat arrowX * 2,
+                                                 y <- game.y + toFloat arrowY * 2 
+                                        }
 
 
 -- Display
 display : (Int,Int) -> Game -> Element
-display (w,h) game = asText game
-
+display (w, h) game = collage w h [ square 40 |> filled red |> move (game.x, game.y) ]
 
 
 -- Main

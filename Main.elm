@@ -1,8 +1,10 @@
 import Window
 import Keyboard
 
--- Input
+shipSize = 20
+(width, height) = (600, 400)
 
+-- Input
 delta : Signal Time
 delta = inSeconds <~ fps 25
 
@@ -12,22 +14,34 @@ input = sampleOn delta ( Input <~ lift .x Keyboard.arrows
                                 ~ delta)
 
 -- Model
-type Game = {x:Float, y:Float}
+type Game = {ship:Ship}
 
 defaultGame : Game
-defaultGame = { x = 0, y = 0 }
+defaultGame = {ship = defaultShip}
+
+type Ship = {x:Float, y:Float}
+
+defaultShip : Ship
+defaultShip = {x = 0,y = (-height/2 + shipSize)}
 
 
 -- Update
 stepGame : Input -> Game -> Game
-stepGame {arrowX, arrowY, delta} game = { game | x <- game.x + toFloat arrowX * 2,
-                                                 y <- game.y + toFloat arrowY * 2 
-                                        }
+stepGame input game = { game | ship <- stepShip input game.ship}
+
+stepShip : Input -> Ship -> Ship
+stepShip {arrowX, arrowY} ship = {ship | x <- clamp (-width/2) (height/2) (ship.x + toFloat arrowX * 2)}
 
 
 -- Display
 display : (Int,Int) -> Game -> Element
-display (w, h) game = collage w h [ square 40 |> filled red |> move (game.x, game.y) ]
+display (w, h) game = 
+  let drawBackground = rect width height |> filled grey
+      drawShip ship  = rect shipSize shipSize |> filled red |> move (ship.x, ship.y)
+  in collage w h [ 
+                    drawBackground, 
+                    drawShip game.ship
+                 ]
 
 
 -- Main

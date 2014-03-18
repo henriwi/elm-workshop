@@ -2,6 +2,7 @@
 /*@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);*/
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400|Dosis:300,400|Source+Code+Pro:200,300,400,400bold|Vollkorn:400italic);
 
+
 /**
  * A simple theme for reveal.js presentations, similar
  * to the default theme. The accent color is darkblue.
@@ -13,8 +14,7 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #F38630;
-  background-color: #F38630;
+  background: #2A2C31;
 }
 
 .reveal {
@@ -22,7 +22,7 @@ body {
   font-size: 36px;
   font-weight: normal;
   letter-spacing: -0.02em;
-  color: #E0E4CC; }
+  color: #FFFEDF; }
 
 ::selection {
   color: white;
@@ -39,7 +39,7 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #E0E4CC;
+  color: #FFFEDF;
   font-family: "Dosis", Impact, sans-serif;
   line-height: 0.9em;
   letter-spacing: 0.02em;
@@ -139,3 +139,11 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: darkblue; }
+
+/*********************************************
+ * CUSTOM STYLES
+ *********************************************/
+.reveal blockquote {
+  background: #2A2C31;
+  box-shadow: none;
+ }

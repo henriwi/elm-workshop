@@ -4,10 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
-
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<title>ELM</title>
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -36,16 +33,50 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-markdown>
-					#ELM
+				<section>
+					<h1>Elm</h1>
 				</section>
 
-				<section data-markdown>
-					# What is Elm?
+				<section>
+					<h1>What is Elm?</h1>
 				</section>
 
-				<section data-markdown>
-					# Why Elm?
+				<section>
+					<blockquote>
+						<p>Elm is a functional language that compiles to HTML, CSS, and JavaScript.</p>
+						<p>Designed for functional reactive programming, Elm makes it easy to create highly interactive applications.</p>
+					</blockquote>
+				</section>
+
+				<section>
+					<ul>
+						<li>Written by Evan Czaplicki</li>
+						<li>Functional language written in Haskell</li>
+						<li>Compiles to HTML, CSS and JavaScript</li>
+						<li>Declarative approach to GUI-programming</li>
+						<li>Concurrent Functional Reactive Programming</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>FRP</h1>
+				</section>
+
+				<section>
+					<!-- Kort om historien til FRP -->
+					<!-- Utfordringer med FRP (behandler ett og ett event) -->
+				</section>	
+
+				<section>
+					<h1>Concurrent FRP</h1>
+				</section>
+
+				<section>
+					<!-- Kort om hva Concurrent FRP er -->
+				</section>
+
+				<section>
+					<h1>Why Elm?</h1>
 				</section>
 
 			</div>
@@ -60,8 +91,8 @@
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-        width: 1024,
-        height: 768,
+        // width: 1024,
+        // height: 768,
         controls: false,
         progress: false,
         history: true,
@@ -70,11 +101,6 @@
         transition: 'fade',
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				// transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [

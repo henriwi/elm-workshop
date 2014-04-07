@@ -18,47 +18,50 @@ input = sampleOn delta ( Input <~ lift .x Keyboard.arrows
 -- Model
 type Pos = (Float,Float)
 
-type Game = {ship:Ship,enemy:Enemy}
+type Game = {paddle:Paddle,ball:Ball}
 
 defaultGame : Game
-defaultGame = {ship = defaultShip,enemy=defaultEnemy}
+defaultGame = {paddle = defaultPaddle, ball = defaultBall}
 
-type Ship = {x:Float, y:Float}
+type Paddle = {x:Float, y:Float}
 
-defaultShip : Ship
-defaultShip = {x = 0,y = (-halfHeight + shipSize)}
+defaultPaddle : Paddle
+defaultPaddle = {x = 0,y = (-halfHeight + shipSize)}
 
-type Enemy = {pos:Pos, vel:Float}
-defaultEnemy = {pos=(0,halfHeight),vel=0}
+type Ball = {pos:Pos, vel:Pos}
+defaultBall = {pos=(0,halfHeight),vel=(0,0)}
 
-type 
 
 -- Update
 stepGame : Input -> Game -> Game
-stepGame input game = { game | ship <- stepShip input game.ship,
-                               enemy <- stepEnemy game.enemy}
+stepGame input game = { game | paddle <- stepPaddle input game.paddle,
+                               ball <- stepBall game.paddle game.ball}
 
-stepShip : Input -> Ship -> Ship
-stepShip {arrowX, arrowY} ship = {ship | x <- clamp (-halfWidth) (halfHeight) (ship.x + toFloat arrowX * 2)}
+stepPaddle : Input -> Paddle -> Paddle
+stepPaddle {arrowX, arrowY} paddle = {paddle | x <- clamp (-halfWidth+40) (halfWidth-40) (paddle.x + toFloat arrowX * 10)}
 
-stepEnemy : Enemy -> Enemy
-stepEnemy e = {e | pos <- addVel e.pos e.vel,
-                   vel <- if | snd e.pos < (-halfHeight+enemySize) -> 0
-                             | otherwise                           -> -2}
+stepBall : Paddle -> Ball -> Ball
+stepBall s e = {e | pos  <- addVel e.pos e.vel,
+                     vel <- if | within (s.x,s.y) e.pos 40 -> (1,10)
+                               | within (0,halfHeight) e.pos halfWidth -> (-2,-10)
+                               | otherwise -> e.vel}
 
-addVel (ax,ay) vel = (ax, ay + vel)                   
+addVel (ax,ay) (bx,by) = (ax + bx, ay + by)      
+near k c n = n >= k - c && n <= k + c
+within (ax, ay) (bx, by) rangeX = (ax |> near bx rangeX)
+                  && (ay |> near by 25)
 
 
 -- Display
 display : (Int,Int) -> Game -> Element
 display (w, h) game = 
-  let drawBackground = rect width height |> filled grey
-      drawShip ship  = square shipSize |> filled red |> move (ship.x, ship.y)
-      drawEnemy enemy = square enemySize |> filled blue |> move (enemy.pos)
+  let drawBackground      = rect width height |> filled black
+      drawPaddle paddle   = rect 80 10 |> filled red |> move (paddle.x, paddle.y)
+      drawBall ball       = circle 8 |> filled white |> move (ball.pos)
   in collage w h [ 
                     drawBackground, 
-                    drawShip game.ship,
-                    drawEnemy game.enemy
+                    drawBall game.ball,
+                    drawPaddle game.paddle
                  ]
 
 --display (w,h) game = asText game

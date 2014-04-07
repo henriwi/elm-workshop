@@ -1,4 +1,3 @@
-import Window
 import Keyboard
 
 (width, height) = (600, 400)
@@ -19,6 +18,7 @@ type Game = {paddle:Paddle,ball:Ball}
 defaultGame : Game
 defaultGame = {paddle = defaultPaddle, ball = defaultBall}
 
+-- Lag Paddle og Ball
 type Paddle = {x:Float, y:Float}
 
 defaultPaddle : Paddle
@@ -26,7 +26,6 @@ defaultPaddle = {x = 0, y = (-halfHeight + 10)}
 
 type Ball = {x:Float, y:Float, vx:Float, vy:Float}
 defaultBall = {x=0, y=halfHeight, vx=0, vy=0}
-
 
 -- Update
 stepGame : Input -> Game -> Game
@@ -49,23 +48,18 @@ near k c n = n >= k - c && n <= k + c
 within (ax, ay) (bx, by) rangeX = (ax |> near bx rangeX)
                   && (ay |> near by 25)
 
-
 -- Display
-display : (Int,Int) -> Game -> Element
-display (w, h) game = 
+display : Game -> Element
+display game = 
   let drawBackground      = rect width height |> filled black
       drawPaddle paddle   = rect 80 10 |> filled red |> move (paddle.x, paddle.y)
       drawBall ball       = circle 8 |> filled white |> move (ball.x, ball.y)
-  in collage w h [ 
+  in collage 800 800 [ 
                     drawBackground, 
                     drawBall game.ball,
                     drawPaddle game.paddle
                  ]
 
---display (w,h) game = asText game
-
 -- Main
-
 game = foldp stepGame defaultGame input
-
-main = lift2 display Window.dimensions game
+main = lift display game

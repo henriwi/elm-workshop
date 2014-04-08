@@ -1,0 +1,9 @@
+- Presentasjon. Intro til Elm
+- Intro til oppgavene
+	- Vis det ferdige spillet
+	- Vis elm-lang.org/try
+	- Gjør de to første oppgavene i fellesskap
+- Gjør oppgave 3-5.
+- Avslutning
+	- Gå gjennom løsningsforslag av spillet
+	- Kort om andre ting ved Elm

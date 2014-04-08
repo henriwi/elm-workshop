@@ -51,4 +51,9 @@ I tillegg skal den oppdatere den nye retningen til ballen. Den skal skifte retni
 ```
 within (ax, ay) (bx, by) rangeX = (ax |> near bx rangeX) && (ay |> near by 25)
 near k c n = n >= k - c && n <= k + c
+
+## Ferdig?
+Hvis du er ferdig, eller vil jobbe videre på spillet, så er dette noen ideer til hva du kan jobbe videre med:
+- Poengsum
+- Legg til funksjonalitet for å kunne starte spillet på nytt
 ```

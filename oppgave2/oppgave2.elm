@@ -1,6 +1,5 @@
-import Keyboard
+display : Element
+display = collage 800 800 
+                 [rect 80 10 |> filled red |> move (0,0)]
 
-display {x,y} = collage 800 800 
-                 [rect 80 10 |> filled red |> move (toFloat x*100, toFloat y*100)]
-
-main = lift display Keyboard.arrows
+main = display

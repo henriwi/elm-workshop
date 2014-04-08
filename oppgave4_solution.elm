@@ -2,7 +2,19 @@
 (halfWidth,halfHeight) = (width/2,height/2)
 
 -- Model
--- Definer modellene her
+type Game = {paddle:Paddle,ball:Ball}
+
+defaultGame : Game
+defaultGame = {paddle = defaultPaddle, ball = defaultBall}
+
+-- Lag Paddle og Ball
+type Paddle = {x:Float, y:Float}
+
+defaultPaddle : Paddle
+defaultPaddle = {x = 0, y = (-halfHeight + 10)}
+
+type Ball = {x:Float, y:Float, vx:Float, vy:Float}
+defaultBall = {x=0, y=halfHeight, vx=0, vy=0}
 
 -- Display
 display : Game -> Element

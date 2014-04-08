@@ -1,28 +1,10 @@
-# Oppgave 1
+# Oppgave 3
 
-I denne første oppgaven skal du bruke Elm til å tegne grafikken til spillet vårt.
+I neste oppgave skal vi utvide grafikken til spillet vårt. Resultatet skal se slik ut:
 
-Resultatet skal se slik ut:
+![Oppgave3∏](img/oppgave3.png)
 
-
-
-## Tips
-Bruk ```collage``` som tar en høyde, bredde og en liste med elementer du vil tegne.
-
-Bruke ```rect``` for å tegne rektangel, og ```circle``` for å tegne sirkelen.
-
-
-## Står du fast?
-Ta en titt på løsningen her: 
-
-
-## Start med dette
-```
-(width,height) = (600,400)
-(halfWidth,halfHeight) = (width/2,height/2)
-
-display : Element
-display = collage 800 800 []
-
-main = display
-```
+- Gjenbruk koden fra oppgave 2
+- Rektangelet skal ligge helt nederst i ```collage```. Tips: Bruk ```halfHeight``` til å plassere rektangelet i bunn av ```collage```
+- Den sorte rammen skal ha bredde ```width``` og høyde ```height```
+- Bruk funksjonen ```circle``` til å tegne en sirkel med størrelse 8. Sirkelen skal plasseres helt øverst i den sorte rammen

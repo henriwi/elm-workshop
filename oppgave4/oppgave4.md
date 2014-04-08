@@ -1,10 +1,10 @@
-# Oppgave 2
+# Oppgave 4
 
 For å kunne få til spill som beveger seg i Elm trenger vi noe som holder på dataene våre. Dette bruker vi modeller til.
 
 Målet er å tegne det samme som i sted, men bruke modeller til å sette posisjonen på de ulike elementene istedenfor hardkodede verdier. Når dette er på plass vil det være mye enklere å få objektene til å bevege seg som vi vil i neste og siste oppgave.
 
-I koden som vi skal bruke som utgangspunkt har jeg gjort litt om på display-koden for, ved blant annet å bruke ```let```-operatoren til å definere et par hjelpefunksjoner. I tillegg tar ```display```-funksjonen nå inn en ```game```-record istedenfor signalet ```Keyboard.arrows```. Deretter bruker vi modellen i ```display```-funksjonen til å flytte elementene våre til korrekt sted.
+I koden vi skal bruke som utgangspunkt har jeg gjort litt om på display-koden vår, ved blant annet å bruke ```let```-operatoren til å definere et par hjelpefunksjoner som tegner de ulike elementene våre. I tillegg tar ```display```-funksjonen nå inn en ```game```-record istedenfor signalet ```Keyboard.arrows```. Deretter bruker vi modellen i ```display```-funksjonen til å flytte elementene våre til korrekt sted.
 
 ## Tips
 - Vi trenger tre modeller. ```Game```, ```Paddle``` og ```Ball```.

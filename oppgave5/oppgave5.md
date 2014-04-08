@@ -2,7 +2,7 @@
 
 I siste oppgaven skal vi fullføre vårt lille spill.
 
-Nå som vi både har modeller og display-koden på plass, trenger vi to elementer til. Det er kode som håndterer de ulike input-parametrene vi skal ha, samt kode som oppdaterer modellene våre basert på inputen. Etterhvert som du jobber med programmet, så legg merke til at koden som tegner grafikken til spillet vårt ikke trenger å endres noe. Grafikken vil automatisk rendres på nytt når modellene våre for nye verdier.
+Nå som vi både har modeller og display-koden på plass, trenger vi to elementer til. Det er kode som håndterer de ulike input-parametrene vi skal ha, samt kode som oppdaterer modellene våre basert på inputen. Etterhvert som du jobber med programmet, legg merke til at koden som tegner grafikken til spillet vårt ikke trenger å endres noe. Grafikken vil automatisk rendres på nytt når modellene våre får nye verdier.
 
 ## Input
 Følgende kodeblokk definerer inputen til programmet vårt. Det inneholder piltastene ```arrowX``` og ```arrowY```.
@@ -26,7 +26,7 @@ I Elm kalles funksjonene som oppdaterer modellene basert på input for ```step``
 stepGame : Input -> Game -> Game
 ```
 
-Denne funksjonen skal så oppdatere ```paddle``` og ```ball``` ved å kalle dens respektive step-funksjoner.
+Denne funksjonen skal oppdatere ```paddle``` og ```ball``` ved å kalle dens respektive step-funksjoner.
 
 ### stepPaddle
 ```stepPaddle``` har følgende definisjon:
@@ -35,7 +35,7 @@ Denne funksjonen skal så oppdatere ```paddle``` og ```ball``` ved å kalle dens
 stepPaddle : Input -> Paddle -> Paddle
 ```
 
-Denne funksjonen skal øke x-posisjonen til paddle med verdien til ```arrowX``` som ligger lagret i Input. Prøv å få paddlen til å ikke å lenger enn bredden på spillet. Du kan bruke ```clamp```-funksjonen til dette.
+Denne funksjonen skal øke x-posisjonen til paddle med verdien til ```arrowX``` som ligger lagret i ```Input```. Prøv å få paddlen til å ikke å lenger enn bredden på spillet. Du kan bruke ```clamp```-funksjonen til dette.
 
 ### stepBall
 ```stepBall``` har følgende definisjon:
@@ -51,9 +51,31 @@ I tillegg skal den oppdatere den nye retningen til ballen. Den skal skifte retni
 ```
 within (ax, ay) (bx, by) rangeX = (ax |> near bx rangeX) && (ay |> near by 25)
 near k c n = n >= k - c && n <= k + c
+```
+
+## Står du fast?
+```stepGame```-funksjonen ser slik ut:
+
+```
+stepGame : Input -> Game -> Game
+stepGame input game = { game | paddle <- stepPaddle input game.paddle,
+                               ball <- stepBall game.paddle game.ball}
+```
+
+## Fortsatt fast?
+```stepPaddle```-funksjonen ser slik ut:
+
+```
+stepPaddle : Input -> Paddle -> Paddle
+stepPaddle {arrowX} paddle = {paddle | x <- clamp (-halfWidth+40) (halfWidth-40) (paddle.x + toFloat arrowX * 10)}
+```
+
+
+## Helt fast?
+Se på løsningen
 
 ## Ferdig?
 Hvis du er ferdig, eller vil jobbe videre på spillet, så er dette noen ideer til hva du kan jobbe videre med:
+
 - Poengsum
 - Legg til funksjonalitet for å kunne starte spillet på nytt
-```

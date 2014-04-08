@@ -12,7 +12,6 @@ type Game = {paddle:Paddle,ball:Ball}
 defaultGame : Game
 defaultGame = {paddle = defaultPaddle, ball = defaultBall}
 
--- Lag Paddle og Ball
 type Paddle = {x:Float, y:Float}
 
 defaultPaddle : Paddle

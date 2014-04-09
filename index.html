@@ -1,98 +1,255 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>ELM</title>
+    <title>ELM</title>
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <script src="./js/elm/elm-runtime.js"></script>
+    <script src="./js/elm/clock.js"></script>
 
-	<body>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-		<div class="reveal">
+  <body>
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Elm</h1>
-				</section>
+    <div class="reveal">
 
-				<section>
-					<h1>What is Elm?</h1>
-				</section>
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Elm</h1>
+          <h3>A functional language for the web</h3>
+          <small>Henrik Wingerei</small>
+        </section>
 
-				<section>
-					<blockquote>
-						<p>Elm is a functional language that compiles to HTML, CSS, and JavaScript.</p>
-						<p>Designed for functional reactive programming, Elm makes it easy to create highly interactive applications.</p>
-					</blockquote>
-				</section>
+        <section>
+          <h4 class="agenda">Agenda</h4>
+          <ul>
+            <li>What is Elm?</li>
+            <li>Hands on: create a game</li>
+            <li>Future of Elm</li>
+          </ul>
+        </section>
 
-				<section>
-					<ul>
-						<li>Written by Evan Czaplicki</li>
-						<li>Functional language written in Haskell</li>
-						<li>Compiles to HTML, CSS and JavaScript</li>
-						<li>Declarative approach to GUI-programming</li>
-						<li>Concurrent Functional Reactive Programming</li>
-					</ul>
-				</section>
+        <section>
+          <h1>What is Elm?</h1>
+        </section>
 
-				<section>
-					<h1>FRP</h1>
-				</section>
+        <section>
+          <ul>
+            <li>Written by Evan Czaplicki</li>
+            <li>Presented in his thesis <i>Elm: Concurrent FRP for Functional GUI</i> from 2012</li>
+            <li>Functional lanauge that compiles to HTML, CSS and Javascript</li>
+            <li>Designed because conventional UI-programming on the web can be made easier.</li>
+            <li>Traditional languages like HTML, CSS and Javascript are not suited for responsive UI-programming</li>
+          </ul>
+        </section>
 
-				<section>
-					<!-- Kort om historien til FRP -->
-					<!-- Utfordringer med FRP (behandler ett og ett event) -->
-				</section>	
+        <section>
+          <h1>Functional Reactive Programming</h1>
+        </section>
 
-				<section>
-					<h1>Concurrent FRP</h1>
-				</section>
+        <section>
+          <ul>
+            <li>Think about a <i>spreadsheet</i></li>
+            <li><i>a</i> will automatically change if <i>b</i> or <i>c</i> change</li>
+            <li>Declarative approach to programming</li>
+            <li>Specify <i><span class="highlight">what</span></i>, instead of <i><span class="highlight">how</span></i>.</li>
+          </ul>
+          <pre>
+            <code data-trim>
+              a = b + c
+            </code>
+          </pre>
+        </section>
 
-				<section>
-					<!-- Kort om hva Concurrent FRP er -->
-				</section>
+        <section>
+          <h1>FRP in Elm</h1>
+        </section>
 
-				<section>
-					<h1>Why Elm?</h1>
-				</section>
+        <section>
+          <ul>
+            <li>Built around the idea of time-varying values, called signals</li>
+            <li>Some signals are:</li>
+          </ul>
+          <pre>
+            <code data-trim>
+Mouse.position
+Mouse.isDown
+Window.width
+            </code>
+          </pre>
+        </section>
 
-			</div>
+        <section>
+          <ul>
+            <li>Works very well for interactive UI-programming with events from keyboard, mouse etc.</li>
+            <li>Details are left to the compiler</li>
+            <li>No event handlers</li>
+            <li>No callbacks</li>
+            <li>No DOM manipulation</li>
+          </ul>
+        </section>
 
-		</div>
+        <section>
+          <h1>Hands on</h1>
+        </section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+        <section>
+          <ul>
+            <li class="highlight">https://github.com/henriwi/elm-workshop</li>
+          </ul>
+        </section>
 
-		<script>
+        <section>
+          <h1>Future of Elm</h1>
+        </section> 
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-        // width: 1024,
-        // height: 768,
+        <section>
+          <ul>
+            <li>So far we've "just" seen games in Elm</li>
+            <li>What about "normal" web applications?</li>
+            <li>Business applications?</li>
+          </ul> 
+        </section>
+
+        <section>
+          <img class="stretch" src="./img/elm-lang.png">
+        </section>
+
+        <section>
+          <img class="stretch" src="./img/elm-lang-template.png">
+        </section>
+
+        <section>
+          <h1>Interactive UI Elements</h1>
+        </section>
+
+        <section>
+          <ul>
+            <li>UI elements in Elm 0.12</li>
+            <li>Makes it possible to create interactive fields (buttons, inputs etc.)</li>
+            <li><a href="http://elm-lang.org/edit/examples/Intermediate/Form.elm">Input form</a></li>
+            <li><a href="http://elm-lang.org/edit/examples/Intermediate/Calculator.elm">Calculator</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <img class="stretch" src="./img/prezi.png">
+        </section>
+
+        <section>
+          <h1>Embedding Elm</h1>
+        </section>
+
+        <section>
+          <ul>
+            <li>Not realistic to just use Elm in one applicaiton</li>
+            <li>But what about creating a small Elm-widget and embedding it?</li>
+          </ul>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim>
+              elm --only-js Snake.elm
+            </code>
+          </pre>
+          <pre>
+            <code data-trim>              
+// get an empty div
+var div = document.getElementById('snake');
+
+// embed our Elm program in that div
+Elm.embed(Elm.Snake, div);
+          </code>
+          </pre>
+        </section>
+
+        <section>
+          <div id="clock" style="width: 310px; height: 310px; margin: 0 auto;"></div>
+          <script>
+            var div = document.getElementById('clock');
+            Elm.embed(Elm.Main, div);
+          </script>
+        </section>
+
+        <section>
+          <h1>Ports in Elm</h1>
+        </section>
+
+        <section>
+          <ul>
+            <li>Ports are used to send information to and from an Elm program</li>
+            <li>Makes it possible to communicate with embedded Elm-widgets from traditional Javascript</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Summary</h1>
+        </section>
+
+        <section>
+          <ul>
+            <li>Elm is a functional language which compiles to HTML, CSS and Javascript</li>
+            <li>Designed for functional reactive programming</li>
+            <li>Easy to create highly interactive applications like games</li>
+            <li>Possible to embed Elm-widgets on any site</li>
+            <li>Still a young language</li>
+            <li>Interesting language to follow</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Want to learn more?</h1>
+        </section>
+
+        <section>
+          <ul>
+            <li class="highlight">http://elm-lang.org</li>
+            <li class="highlight">http://www.infoq.com/presentations/elm-reactive-programming</li>
+            <li class="highlight">https://groups.google.com/forum/#!forum/elm-discuss</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Thank you</h1>
+        </section>
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        width: 1280,
+        height: 1024,
+        // margin: 0,
         controls: false,
         progress: false,
         history: true,
@@ -100,20 +257,20 @@
         keyboard: true,
         transition: 'fade',
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
 
-		</script>
+    </script>
 
-	</body>
+  </body>
 </html>

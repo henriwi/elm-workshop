@@ -9,5 +9,5 @@ I koden vi skal bruke som utgangspunkt har jeg gjort litt om på display-koden v
 - Vi trenger tre modeller. ```Game```, ```Paddle``` og ```Ball```.
 - ```Game``` skal ha to propertier ```paddle``` og ```ball```
 - ```Paddle``` skal ha to propertier ```x``` og ```y```, begge av typen ```Float```. Dette holder på posisjonen til ```Paddle```
-- ```Ball``` skal ha fire propertier ```x```, ```y```, ```vx``` og ```vy```. ```x``` og ```y``` holder på posisjonen til ballen, mens ```vx``` og ```vy``` holder på den nåværende retningen til ballen.
-- Videre må det defineres tre default-records, en for hver type (```defaultGame```, ```defaultPaddle``` og ```defaultGame```)
+- ```Ball``` skal ha fire propertier ```x```, ```y```, ```vx``` og ```vy```. ```x``` og ```y``` holder på posisjonen til ballen, mens ```vx``` og ```vy``` holder på den nåværende retningen til ballen. Alle disse skal være av typen ```Float```
+- Til slutt må det defineres tre default-records, en for hver type (```defaultGame```, ```defaultPaddle``` og ```defaultGame```). Verdiene til disse default-modellene skal være de verdiene vi ønsker at elementene skal ha som utgangsposisjon (samme verdier som i oppgave 3).

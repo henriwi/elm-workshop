@@ -7,7 +7,7 @@ Nå som vi både har modeller og display-koden på plass, trenger vi to elemente
 ## Input
 Startkoden (oppgave5.elm) inneholder følgende kode som håndterer inputen til programet vårt.
 
-I praksis vil dette føre til at elementene i spillet vårt kan oppdatere seg ca. 25 ganger i sekundet.
+Vi tar vare på x-verdien til signalet ```Keyboard.arrows``` i en record ```input```. Denne verdien vil oppdatere ca. 25 ganger i sekundet, noe som betyr at elementene i spillet vårt kan oppdatere seg ca. 25 ganger i sekundet.
  
 ```
 -- Input
@@ -47,7 +47,7 @@ stepBall : Paddle -> Ball -> Ball
 
 Denne funksjonen skal oppdatere posisjonen til ballen (```x``` og ```y```) til den nåværende posisjonen til ballen, pluss retningen til ballen (```vx``` og ```vy```). 
 
-I tillegg skal den oppdatere den nye retningen til ballen. Den skal skifte retning hvis den er i nærheten av paddlen, eller toppen av brettet. Her kan du bruke hjelpefunksjonen ```within``` til å finne ut om retningen skal snus. Denne tar inn to posisjoner og en avstand, og returnerer ```True``` hvis posisjonene er i nærheten av hverandre, ```False``` hvis ikke. Her kan du f.eks. sende inn posisjonen til ballen, og posisjonen til paddlen for å se om ballen skal snu retning. Argumentet ```rangeX``` sier hvor langt unna ballen kan være posisjonen du sender inn på x-aksen for at funksjonen skal returnere ```True```.
+I tillegg skal funksjonen oppdatere den nye retningen til ballen (oppdatere feltene ```vx``` og ```vy```). Ballen skal skifte retning hvis den er i nærheten av paddlen, eller toppen av brettet. Her kan du bruke hjelpefunksjonen ```within``` (vist nedenfor) til å finne ut om retningen skal snus. ```within``` tar inn to posisjoner og en avstand, og returnerer ```True``` hvis posisjonene er i nærheten av hverandre, ```False``` hvis ikke. Her kan du f.eks. sende inn posisjonen til ballen, og posisjonen til paddlen for å se om ballen skal snu retning. Argumentet ```rangeX``` sier hvor langt unna ballens posisjon kan være den posisjonen du sender inn på x-aksen for at ```within``` skal returnere ```True```.
 
 ```
 within (ax, ay) (bx, by) rangeX = (ax |> near bx rangeX) && (ay |> near by 25)

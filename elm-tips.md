@@ -25,6 +25,17 @@ En record er en datastruktur med "propertier"
 main = asText { x=3, y=4 }
 ```
 
+## Typer
+En record kan også ha en type-definisjon
+```
+type Person = {name:String, age:Int}
+henrik : Person
+henrik = {name="Wingerei", age=27}
+
+main = asText henrik
+```
+
+
 ### Oppdatering av Records
 
 ```

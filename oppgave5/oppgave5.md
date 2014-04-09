@@ -12,9 +12,8 @@ Følgende kodeblokk definerer inputen til programmet vårt. Det inneholder pilta
 delta : Signal Time
 delta = inSeconds <~ fps 25
 
-type Input = { arrowX:Int, arrowY:Int}
-input = sampleOn delta ( Input <~ lift .x Keyboard.arrows
-                                ~ lift .y Keyboard.arrows)
+type Input = { arrowX:Int}
+input = sampleOn delta ( Input <~ lift .x Keyboard.arrows)
 ```
 
 ## Step functions

@@ -25,15 +25,30 @@ En record er en datastruktur med "propertier"
 main = asText { x=3, y=4 }
 ```
 
-Oppdatering av Records
+### Oppdatering av Records
 
 ```
 type Person = {name:String, age:Int}
 henrik : Person
 henrik = {name="Wingerei", age=27}
 
-setAge : Person -> Int -> Person
-setAge henrik a = {henrik | age <- a}
+updatePerson : Person -> Int -> String -> Person
+updatePerson henrik age name = {henrik | age <- age,
+                                       name <- name}
 
-main = asText (setAge henrik 28)
+main = asText (updatePerson henrik 28 "Olsen")
 ```
+
+### Mer oppdatering av record
+```
+type Person = {name:String, age:Int}
+henrik : Person
+henrik = {name="Wingerei", age=27}
+
+updatePerson : Person -> Int -> String -> Person
+updatePerson henrik age name = {henrik | age <- if | age < 30 -> age
+                                              | otherwise -> 30,
+                                    name <- name}
+
+main = asText (updatePerson henrik 40 "Olsen")
+``

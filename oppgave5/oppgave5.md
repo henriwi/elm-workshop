@@ -45,9 +45,9 @@ Denne funksjonen skal øke x-posisjonen til paddle med verdien til ```arrowX``` 
 stepBall : Paddle -> Ball -> Ball
 ```
 
-Denne funksjonen skal oppdatere posisjonen til ballen (```x``` og ```y```) til den nåværende retningen til ballen (```vx``` og ```vy```). 
+Denne funksjonen skal oppdatere posisjonen til ballen (```x``` og ```y```) til den nåværende posisjonen til ballen, pluss retningen til ballen (```vx``` og ```vy```). 
 
-I tillegg skal den oppdatere den nye retningen til ballen. Den skal skifte retning hvis den er i nærheten av paddlen, eller toppen av brettet. Her kan du bruke hjelpefunksjonen ```within``` til å finne ut om retningen skal snus. Denne tar inn to posisjoner og en avstand, og returnerer ```True``` hvis posisjonene er i nærheten av hverandre, ```False``` hvis ikke. Her kan du f.eks. sende inn posisjonen til ballen, og posisjonen til paddlen for å se på ballen skal snu retning.
+I tillegg skal den oppdatere den nye retningen til ballen. Den skal skifte retning hvis den er i nærheten av paddlen, eller toppen av brettet. Her kan du bruke hjelpefunksjonen ```within``` til å finne ut om retningen skal snus. Denne tar inn to posisjoner og en avstand, og returnerer ```True``` hvis posisjonene er i nærheten av hverandre, ```False``` hvis ikke. Her kan du f.eks. sende inn posisjonen til ballen, og posisjonen til paddlen for å se om ballen skal snu retning. Argumentet ```rangeX``` sier hvor langt unna ballen kan være posisjonen du sender inn på x-aksen for at funksjonen skal returnere ```True```.
 
 ```
 within (ax, ay) (bx, by) rangeX = (ax |> near bx rangeX) && (ay |> near by 25)

@@ -16,7 +16,6 @@ type Game = {paddle:Paddle,ball:Ball}
 defaultGame : Game
 defaultGame = {paddle = defaultPaddle, ball = defaultBall}
 
--- Lag Paddle og Ball
 type Paddle = {x:Float, y:Float}
 
 defaultPaddle : Paddle
@@ -36,7 +35,7 @@ stepPaddle {arrowX} paddle = {paddle | x <- clamp (-halfWidth+40) (halfWidth-40)
 stepBall : Paddle -> Ball -> Ball
 stepBall p b = {b | x  <- b.x + b.vx,
                     y  <- b.y + b.vy,
-                    vx <- -(p.x+40-(b.x+4))*0.01,
+                    vx <- -(p.x)*0.01,
                     vy <- if | within (p.x,p.y) (b.x,b.y) 40       -> 10
                              | within (0,halfHeight) (b.x,b.y) 300 -> -10
                              | otherwise                           -> b.vy}

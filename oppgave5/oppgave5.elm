@@ -4,7 +4,11 @@ import Keyboard
 (halfWidth,halfHeight) = (width/2,height/2)
 
 -- Input
--- Definer input her
+delta : Signal Time
+delta = inSeconds <~ fps 25
+
+type Input = {arrowX:Int}
+input = sampleOn delta ( Input <~ lift .x Keyboard.arrows)
 
 -- Model
 type Game = {paddle:Paddle,ball:Ball}

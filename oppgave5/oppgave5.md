@@ -5,8 +5,10 @@ I siste oppgaven skal vi fullføre vårt lille spill.
 Nå som vi både har modeller og display-koden på plass, trenger vi to elementer til. Det er kode som håndterer de ulike input-parametrene vi skal ha, samt kode som oppdaterer modellene våre basert på inputen. Etterhvert som du jobber med programmet, legg merke til at koden som tegner grafikken til spillet vårt ikke trenger å endres noe. Grafikken vil automatisk rendres på nytt når modellene våre får nye verdier.
 
 ## Input
-Følgende kodeblokk definerer inputen til programmet vårt. Det inneholder piltastene ```arrowX``` og ```arrowY```.
+Startkoden (oppgave5.elm) inneholder følgende kode som håndterer inputen til programet vårt.
 
+I praksis vil dette føre til at elementene i spillet vårt kan oppdatere seg ca. 25 ganger i sekundet.
+ 
 ```
 -- Input
 delta : Signal Time
@@ -45,7 +47,7 @@ stepBall : Paddle -> Ball -> Ball
 
 Denne funksjonen skal oppdatere posisjonen til ballen (```x``` og ```y```) til den nåværende retningen til ballen (```vx``` og ```vy```). 
 
-I tillegg skal den oppdatere den nye retningen til ballen. Den skal skifte retning hvis den er i nærheten av paddlen, eller toppen av brettet. Her kan du bruke hjelpefunksjonen ```within``` til å finne ut om retningen skal snus. Denne tar inn to posisjoner og en avstand, og returnerer ```True``` hvis posisjonene er i nærheten av hverandre, ```False``` hvis ikke.
+I tillegg skal den oppdatere den nye retningen til ballen. Den skal skifte retning hvis den er i nærheten av paddlen, eller toppen av brettet. Her kan du bruke hjelpefunksjonen ```within``` til å finne ut om retningen skal snus. Denne tar inn to posisjoner og en avstand, og returnerer ```True``` hvis posisjonene er i nærheten av hverandre, ```False``` hvis ikke. Her kan du f.eks. sende inn posisjonen til ballen, og posisjonen til paddlen for å se på ballen skal snu retning.
 
 ```
 within (ax, ay) (bx, by) rangeX = (ax |> near bx rangeX) && (ay |> near by 25)
@@ -53,28 +55,4 @@ near k c n = n >= k - c && n <= k + c
 ```
 
 ## Står du fast?
-```stepGame```-funksjonen ser slik ut:
-
-```
-stepGame : Input -> Game -> Game
-stepGame input game = { game | paddle <- stepPaddle input game.paddle,
-                               ball <- stepBall game.paddle game.ball}
-```
-
-## Fortsatt fast?
-```stepPaddle```-funksjonen ser slik ut:
-
-```
-stepPaddle : Input -> Paddle -> Paddle
-stepPaddle {arrowX} paddle = {paddle | x <- clamp (-halfWidth+40) (halfWidth-40) (paddle.x + toFloat arrowX * 10)}
-```
-
-
-## Helt fast?
-Se på løsningen
-
-## Ferdig?
-Hvis du er ferdig, eller vil jobbe videre på spillet, så er dette noen ideer til hva du kan jobbe videre med:
-
-- Poengsum
-- Legg til funksjonalitet for å kunne starte spillet på nytt
+Jeg har laget noen hint og forslag til implementasjon av noen funksjoner i filen ```oppgave5_hint.md```

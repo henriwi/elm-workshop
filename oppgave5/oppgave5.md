@@ -56,3 +56,9 @@ near k c n = n >= k - c && n <= k + c
 
 ## Står du fast?
 Jeg har laget noen hint og forslag til implementasjon av noen funksjoner i filen ```oppgave5_hint.md```
+
+## Ferdig?
+Hvis du er ferdig, og ønsker å fortsette er dette et par ekstra oppgaver du kan jobbe med
+
+- Legg til poengsum
+- Legg til mulighet for å starte spillet på nytt 
